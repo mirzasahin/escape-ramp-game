@@ -2,7 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
-using System.Threading.Tasks;
 
 public class Animation : MonoBehaviour
 {
@@ -10,6 +9,10 @@ public class Animation : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        if (!gameObject)
+        {
+            return;
+        }
         transform.DORotate(new Vector3(0, 360, 0), 5f)
             .SetLoops(-1, LoopType.Restart)
             .SetRelative()
