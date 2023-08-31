@@ -5,9 +5,10 @@ using UnityEngine;
 
 public class ItemCollector : MonoBehaviour
 {
-    
+    AudioManager audioManager;
     void Start()
     {
+        audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
 
     }
 
@@ -21,6 +22,7 @@ public class ItemCollector : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Item"))
         {
+            audioManager.PlaySFX(audioManager.itemCollectedSFX);
             Destroy(other.gameObject);
         }
     }
