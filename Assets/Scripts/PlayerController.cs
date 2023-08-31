@@ -40,14 +40,22 @@ public class PlayerController : MonoBehaviour
         Jump();
     }
 
-    private void OnTriggerEnter(Collider other)
+    private IEnumerator OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Obstacle"))
+        if (other.CompareTag("Obstacle") && isLive)
         {
+            audioManager.PlaySFX(audioManager.hitWoodSFX);
+            audioManager.StopBackgroundMusic();
             isLive = false;
             playerAnim.SetBool("Die", true);
+
+            yield return new WaitForSeconds(0.9f);
+            audioManager.PlaySFX(audioManager.fallingSFX);
+
         }
     }
+
+
 
     private void Jump()
     {

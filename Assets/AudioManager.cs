@@ -12,6 +12,8 @@ public class AudioManager : MonoBehaviour
     public AudioClip backgroundMusic;
     public AudioClip itemCollectedSFX;
     public AudioClip jumpSFX;
+    public AudioClip fallingSFX;
+    public AudioClip hitWoodSFX;
 
     // Start is called before the first frame update
     void Start()
@@ -29,5 +31,10 @@ public class AudioManager : MonoBehaviour
     public void PlaySFX(AudioClip clip)
     {
         SFXSource.PlayOneShot(clip);
+    }
+
+    public void StopBackgroundMusic()
+    {
+        musicSource.Stop();
     }
 }
