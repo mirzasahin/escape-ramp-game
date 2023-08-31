@@ -9,7 +9,6 @@ public class ItemCollector : MonoBehaviour
     void Start()
     {
         audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
-
     }
 
     // Update is called once per frame

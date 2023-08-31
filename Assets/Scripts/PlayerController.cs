@@ -7,6 +7,8 @@ using DG.Tweening.Core.Easing;
 
 public class PlayerController : MonoBehaviour
 {
+    AudioManager audioManager;
+
     private float dirRight;
 
     [SerializeField] float dirSpeedRight;
@@ -24,6 +26,7 @@ public class PlayerController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
         playerAnim = GetComponent<Animator>();
         playerRb = GetComponent<Rigidbody>();
         isLive = true;
@@ -50,6 +53,7 @@ public class PlayerController : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Space) && isLive && IsGrounded())
         {
+            audioManager.PlaySFX(audioManager.jumpSFX);
             playerAnim.SetTrigger("Jumped");
             playerRb.transform.DOMoveY(2, 0.5f).SetEase(barrelEase).OnComplete(() =>
             {
