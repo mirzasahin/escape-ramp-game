@@ -13,6 +13,7 @@ public class Animation : MonoBehaviour
         {
             return;
         }
+
         transform.DORotate(new Vector3(0, 360, 0), 5f)
             .SetLoops(-1, LoopType.Restart)
             .SetRelative()
