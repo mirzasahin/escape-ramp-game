@@ -36,7 +36,7 @@ public class PlayerController : MonoBehaviour
 
     private void Update()
     {
-        Live();
+        Movement();
         Jump();
     }
 
@@ -70,11 +70,28 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    private void Live()
+    private void Movement()
     {
         if (isLive)
         {
             dirRight = Input.GetAxis("Horizontal") * dirSpeedRight * Time.deltaTime;
+            if(Input.GetKey(KeyCode.D))
+            {
+                playerAnim.SetBool("Run Right", true);
+                playerAnim.SetBool("Run Left", false);
+
+            }
+            else if (Input.GetKey(KeyCode.A)) { 
+                playerAnim.SetBool("Run Left", true);
+                playerAnim.SetBool("Run Right", false);
+            }
+
+            else
+            {
+                playerAnim.SetBool("Run Right", false);
+                playerAnim.SetBool("Run Left", false);
+            }
+
             transform.Translate(dirRight, 0, dirSpeedForward * Time.deltaTime);
              
         }
