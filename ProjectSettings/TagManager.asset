@@ -8,6 +8,7 @@ TagManager:
   - Obstacle
   - Ground
   - Audio
+  - Hearth
   layers:
   - Default
   - TransparentFX

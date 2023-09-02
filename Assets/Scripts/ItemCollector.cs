@@ -24,6 +24,12 @@ public class ItemCollector : MonoBehaviour
             audioManager.PlaySFX(audioManager.itemCollectedSFX);
             Destroy(other.gameObject);
         }
+
+        if (other.gameObject.CompareTag("Hearth"))
+        {
+            audioManager.PlaySFX(audioManager.heartCollectedSFX);
+            Destroy(other.gameObject);
+        }
     }
 
 }

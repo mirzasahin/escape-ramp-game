@@ -11,6 +11,7 @@ public class AudioManager : MonoBehaviour
     [Header("---------- Audio Clip ----------")]
     public AudioClip backgroundMusic;
     public AudioClip itemCollectedSFX;
+    public AudioClip heartCollectedSFX;
     public AudioClip jumpSFX;
     public AudioClip fallingSFX;
     public AudioClip hitWoodSFX;

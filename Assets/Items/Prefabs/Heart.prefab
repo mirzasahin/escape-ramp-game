@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: -3023321589551241916}
   m_Layer: 0
   m_Name: Heart
-  m_TagString: Item
+  m_TagString: Hearth
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -33,7 +33,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: -90, y: -22.742, z: -5.208}
 --- !u!33 &3844495192463400570
 MeshFilter:

@@ -63,6 +63,8 @@ public class PlayerController : MonoBehaviour
         {
             audioManager.PlaySFX(audioManager.jumpSFX);
             playerAnim.SetTrigger("Jumped");
+            //playerRb.velocity = new Vector3(playerRb.velocity.x, jumpForce, playerRb.velocity.z);
+
             playerRb.transform.DOMoveY(2, 0.5f).SetEase(barrelEase).OnComplete(() =>
             {
                 playerRb.transform.DOMoveY(0, 0.4f).SetEase(barrelEase); // InOutFlash
@@ -79,14 +81,13 @@ public class PlayerController : MonoBehaviour
             {
                 playerAnim.SetBool("Run Right", true);
                 playerAnim.SetBool("Run Left", false);
-                dirSpeedForward = 5;
+                dirSpeedForward = 4.5f;
 
             }
             else if (Input.GetKey(KeyCode.A)) { 
                 playerAnim.SetBool("Run Left", true);
                 playerAnim.SetBool("Run Right", false);
-                dirSpeedForward = 5;
-
+                dirSpeedForward = 4.5f;
             }
 
             else
@@ -100,7 +101,7 @@ public class PlayerController : MonoBehaviour
              
         }
     }
-
+    
     private bool IsGrounded()
     {
         if(transform.position.y <= 0.1)
