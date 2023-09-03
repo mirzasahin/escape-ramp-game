@@ -19,7 +19,7 @@ public class PlayerController : MonoBehaviour
     private Animator playerAnim;
     private Rigidbody playerRb;
 
-    private bool isLive;
+    public bool isLive;
 
     public Ease barrelEase;
 
@@ -39,7 +39,6 @@ public class PlayerController : MonoBehaviour
         Movement();
         Jump();
     }
-
     private IEnumerator OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Obstacle") && isLive)
@@ -54,9 +53,6 @@ public class PlayerController : MonoBehaviour
 
         }
     }
-
-
-
     private void Jump()
     {
         if (Input.GetKeyDown(KeyCode.Space) && isLive && IsGrounded())
@@ -101,7 +97,6 @@ public class PlayerController : MonoBehaviour
              
         }
     }
-    
     private bool IsGrounded()
     {
         if(transform.position.y <= 0.1)
