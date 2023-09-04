@@ -33,13 +33,25 @@ public class CameraFollower : MonoBehaviour
         {
             transform.position = Vector3.Lerp(transform.position, target.transform.position + offset, Time.deltaTime * 5);
         }
+
+        FinishCameraAnimationFOV();
     }
-    
+
     private void AnimateFOV()
     {
         mainCamera.DOFieldOfView(50, 3f)
             .SetEase(Ease.InOutQuad)
             .SetDelay(1.5f);
+    }
+
+    private void FinishCameraAnimationFOV()
+    {
+        if(target.transform.position.x <= -245)
+        {
+            mainCamera.DOFieldOfView(35, 0.3f)
+            .SetEase(Ease.InOutQuad)
+            .SetDelay(1.5f);
+        }
     }
 
     private void RotateCameraWithTween()

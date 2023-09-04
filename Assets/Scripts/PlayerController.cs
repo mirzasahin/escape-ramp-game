@@ -11,6 +11,8 @@ public class PlayerController : MonoBehaviour
 
     private float dirRight;
 
+    public bool completedLevel;
+
     [SerializeField] float dirSpeedRight;
     [SerializeField] float dirSpeedForward;
 
@@ -39,6 +41,7 @@ public class PlayerController : MonoBehaviour
         Movement();
         Jump();
         DivingAnimation();
+        CompletedLevel();
     }
     private IEnumerator OnTriggerEnter(Collider other)
     {
@@ -56,7 +59,7 @@ public class PlayerController : MonoBehaviour
     }
     private void Jump()
     {
-        if (Input.GetKeyDown(KeyCode.Space) && isLive && IsGrounded())
+        if (Input.GetKeyDown(KeyCode.Space) && isLive && IsGrounded() && !completedLevel)
         {
             audioManager.PlaySFX(audioManager.jumpSFX);
             playerAnim.SetTrigger("Jumped");
@@ -71,7 +74,7 @@ public class PlayerController : MonoBehaviour
 
     private void Movement()
     {
-        if (isLive)
+        if (isLive && !completedLevel)
         {
             dirRight = Input.GetAxis("Horizontal") * dirSpeedRight * Time.deltaTime;
             if(Input.GetKey(KeyCode.D))
@@ -81,7 +84,8 @@ public class PlayerController : MonoBehaviour
                 dirSpeedForward = 4.5f;
 
             }
-            else if (Input.GetKey(KeyCode.A)) { 
+            else if (Input.GetKey(KeyCode.A))
+            { 
                 playerAnim.SetBool("Run Left", true);
                 playerAnim.SetBool("Run Right", false);
                 dirSpeedForward = 4.5f;
@@ -93,10 +97,13 @@ public class PlayerController : MonoBehaviour
                 playerAnim.SetBool("Run Left", false);
                 dirSpeedForward = 6;
             }
-
-            transform.Translate(dirRight, 0, dirSpeedForward * Time.deltaTime);
-             
         }
+
+        if (isLive)
+        {
+            transform.Translate(dirRight, 0, dirSpeedForward * Time.deltaTime);
+        }
+
     }
     private bool IsGrounded()
     {
@@ -116,6 +123,19 @@ public class PlayerController : MonoBehaviour
         {
             Debug.Log(transform.position.x);
             playerAnim.SetTrigger("Diving");
+        }
+    }
+
+    private void CompletedLevel()
+    {
+        if(transform.position.x <= -245)
+        {
+            completedLevel = true;
+            transform.DOMoveZ(0, 2f);
+        }
+        else
+        {
+            completedLevel = false;
         }
     }
 }
