@@ -38,6 +38,7 @@ public class PlayerController : MonoBehaviour
     {
         Movement();
         Jump();
+        DivingAnimation();
     }
     private IEnumerator OnTriggerEnter(Collider other)
     {
@@ -106,6 +107,15 @@ public class PlayerController : MonoBehaviour
         else
         {
             return false;
+        }
+    }
+
+    private void DivingAnimation()
+    {
+        if(transform.position.x <= -268) 
+        {
+            Debug.Log(transform.position.x);
+            playerAnim.SetTrigger("Diving");
         }
     }
 }
