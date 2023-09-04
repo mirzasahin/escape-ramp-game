@@ -18,6 +18,8 @@ public class PlayerController : MonoBehaviour
 
     [SerializeField] float jumpForce;
 
+    private bool hasPlayedDivingSound;
+
     private Animator playerAnim;
     private Rigidbody playerRb;
 
@@ -119,11 +121,14 @@ public class PlayerController : MonoBehaviour
 
     private void DivingAnimation()
     {
-        if(transform.position.x <= -268) 
+        if(transform.position.x <= -268 && !hasPlayedDivingSound) 
         {
-            Debug.Log(transform.position.x);
             playerAnim.SetTrigger("Diving");
+            audioManager.PlaySFX(audioManager.wooSFX);
+            hasPlayedDivingSound = true;
         }
+
+
     }
 
     private void CompletedLevel()
@@ -132,6 +137,9 @@ public class PlayerController : MonoBehaviour
         {
             completedLevel = true;
             transform.DOMoveZ(0, 2f);
+            playerAnim.SetBool("Run Right", false);
+                playerAnim.SetBool("Run Left", false);
+
         }
         else
         {

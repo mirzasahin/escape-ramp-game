@@ -15,6 +15,7 @@ public class AudioManager : MonoBehaviour
     public AudioClip jumpSFX;
     public AudioClip fallingSFX;
     public AudioClip hitWoodSFX;
+    public AudioClip wooSFX;
 
     // Start is called before the first frame update
     void Start()
