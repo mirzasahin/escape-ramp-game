@@ -52,6 +52,7 @@ public class PlayerController : MonoBehaviour
             audioManager.PlaySFX(audioManager.hitWoodSFX);
             audioManager.StopBackgroundMusic();
             isLive = false;
+            playerRb.isKinematic = true;
             playerAnim.SetBool("Die", true);
             yield return new WaitForSeconds(0.9f);
             audioManager.PlaySFX(audioManager.fallingSFX);
@@ -77,14 +78,14 @@ public class PlayerController : MonoBehaviour
         if (isLive && !completedLevel)
         {
             dirRight = Input.GetAxis("Horizontal") * dirSpeedRight * Time.deltaTime;
-            if(Input.GetKey(KeyCode.D))
+            if(Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow))
             {
                 playerAnim.SetBool("Run Right", true);
                 playerAnim.SetBool("Run Left", false);
                 dirSpeedForward = 4.5f;
 
             }
-            else if (Input.GetKey(KeyCode.A))
+            else if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow))
             { 
                 playerAnim.SetBool("Run Left", true);
                 playerAnim.SetBool("Run Right", false);
