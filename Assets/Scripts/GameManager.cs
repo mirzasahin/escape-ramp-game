@@ -9,6 +9,7 @@ public class GameManager : MonoBehaviour
 {
     public GameObject playAgainButton;
     public GameObject nextLevelButton;
+    public GameObject gameCompletedMenu;
     PlayerController playerControllerScript;
     // Start is called before the first frame update
     void Start()
@@ -28,6 +29,11 @@ public class GameManager : MonoBehaviour
         {
             StartCoroutine(NextLevelButton());
         }
+
+        if (playerControllerScript.completedLevel == true && SceneManager.GetActiveScene().buildIndex == 2 )
+        {
+            StartCoroutine(GameCompletedMenu());
+        }
     }
 
     public IEnumerator GameOverMenu()
@@ -42,13 +48,29 @@ public class GameManager : MonoBehaviour
         nextLevelButton.SetActive(true);
     }
 
+    public IEnumerator GameCompletedMenu()
+    {
+        yield return new WaitForSeconds(6f);
+        gameCompletedMenu.SetActive(true);
+    }
+
     public void PlayAgain()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
+    public void RePlay()
+    {
+        SceneManager.LoadScene(1);
+    }
+
 
     public void PlayNextLevel()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+    }
+
+    public void QuitGame()
+    {
+        Application.Quit();
     }
 }
