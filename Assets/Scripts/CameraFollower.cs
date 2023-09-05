@@ -60,4 +60,9 @@ public class CameraFollower : MonoBehaviour
         transform.DOMove(finishPosOffset, 3f);
         transform.DORotateQuaternion(finishRotateOffset, 3f);
     }
+
+    private void BlurCamera()
+    {
+
+    }
 }
