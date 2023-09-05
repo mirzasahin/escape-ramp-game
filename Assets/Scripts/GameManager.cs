@@ -8,6 +8,7 @@ using UnityEngine.UI;
 public class GameManager : MonoBehaviour
 {
     public GameObject playAgainButton;
+    public GameObject nextLevelButton;
     PlayerController playerControllerScript;
     // Start is called before the first frame update
     void Start()
@@ -22,6 +23,11 @@ public class GameManager : MonoBehaviour
         {
             StartCoroutine(GameOverMenu());
         }
+
+        if(playerControllerScript.completedLevel == true)
+        {
+            StartCoroutine(NextLevelButton());
+        }
     }
 
     public IEnumerator GameOverMenu()
@@ -30,8 +36,19 @@ public class GameManager : MonoBehaviour
         playAgainButton.SetActive(true);
     }
 
+    public IEnumerator NextLevelButton()
+    {
+        yield return new WaitForSeconds(6f);
+        nextLevelButton.SetActive(true);
+    }
+
     public void PlayAgain()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+    }
+
+    public void PlayNextLevel()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
 }

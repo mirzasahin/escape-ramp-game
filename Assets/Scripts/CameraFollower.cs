@@ -40,7 +40,7 @@ public class CameraFollower : MonoBehaviour
     private void AnimateFOV()
     {
         mainCamera.DOFieldOfView(50, 3f)
-            .SetEase(Ease.InOutQuad)
+            .SetEase(Ease.Linear)
             .SetDelay(1.5f);
     }
 
@@ -48,9 +48,9 @@ public class CameraFollower : MonoBehaviour
     {
         if(target.transform.position.x <= -245)
         {
-            mainCamera.DOFieldOfView(35, 0.3f)
-            .SetEase(Ease.InOutQuad)
-            .SetDelay(1.5f);
+            mainCamera.DOFieldOfView(35, 3f)
+            .SetEase(Ease.Linear);
+            //.SetDelay(1.5f);
         }
     }
 

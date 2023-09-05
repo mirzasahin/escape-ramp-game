@@ -53,10 +53,8 @@ public class PlayerController : MonoBehaviour
             audioManager.StopBackgroundMusic();
             isLive = false;
             playerAnim.SetBool("Die", true);
-
             yield return new WaitForSeconds(0.9f);
             audioManager.PlaySFX(audioManager.fallingSFX);
-
         }
     }
     private void Jump()
@@ -127,8 +125,6 @@ public class PlayerController : MonoBehaviour
             audioManager.PlaySFX(audioManager.wooSFX);
             hasPlayedDivingSound = true;
         }
-
-
     }
 
     private void CompletedLevel()
@@ -138,8 +134,7 @@ public class PlayerController : MonoBehaviour
             completedLevel = true;
             transform.DOMoveZ(0, 2f);
             playerAnim.SetBool("Run Right", false);
-                playerAnim.SetBool("Run Left", false);
-
+            playerAnim.SetBool("Run Left", false);
         }
         else
         {
