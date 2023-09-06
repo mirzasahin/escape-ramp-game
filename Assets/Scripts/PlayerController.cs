@@ -12,6 +12,9 @@ public class PlayerController : MonoBehaviour
     private float dirRight;
 
     public bool completedLevel;
+    public bool moveRight;
+    public bool moveLeft;
+    public bool downButton;
 
     [SerializeField] float dirSpeedRight;
     [SerializeField] float dirSpeedForward;
@@ -41,6 +44,7 @@ public class PlayerController : MonoBehaviour
     private void Update()
     {
         Movement();
+        MovePlayer();
         Jump();
         DivingAnimation();
         CompletedLevel();
@@ -73,19 +77,22 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    private void Movement()
+    public void Movement()
     {
         if (isLive && !completedLevel)
         {
-            dirRight = Input.GetAxis("Horizontal") * dirSpeedRight * Time.deltaTime;
-            if(Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow))
+            if (!downButton)
+            {
+                dirRight = Input.GetAxis("Horizontal") * dirSpeedRight * Time.deltaTime;
+            }
+            if (Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow) || moveRight )
             {
                 playerAnim.SetBool("Run Right", true);
                 playerAnim.SetBool("Run Left", false);
                 dirSpeedForward = 4.5f;
 
             }
-            else if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow))
+            else if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow) || moveLeft)
             { 
                 playerAnim.SetBool("Run Left", true);
                 playerAnim.SetBool("Run Right", false);
@@ -140,6 +147,53 @@ public class PlayerController : MonoBehaviour
         else
         {
             completedLevel = false;
+        }
+    }
+
+
+    // Mobile Buttons
+    public void DownRightButton()
+    {
+        moveRight = true;
+        downButton = true;
+    }
+
+    public void UpRightButton()
+    {
+        moveRight = false;
+        downButton = false;
+
+
+    }
+
+
+    public void DownLeftButton()
+    {
+        moveLeft = true;
+        downButton = true;
+    }
+
+    public void UpLeftButton()
+    {
+        moveLeft = false;
+        downButton = false;
+    }
+
+
+    private void MovePlayer()
+    {
+        if (moveLeft)
+        {
+            dirRight =  -dirSpeedRight * Time.deltaTime;
+        }
+        else if (moveRight)
+        {
+            dirRight = dirSpeedRight * Time.deltaTime;
+
+        }
+        else
+        {
+            dirRight = 0;
         }
     }
 }
