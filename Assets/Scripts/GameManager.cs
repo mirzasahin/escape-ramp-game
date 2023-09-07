@@ -51,7 +51,8 @@ public class GameManager : MonoBehaviour
     public IEnumerator GameCompletedMenu()
     {
         yield return new WaitForSeconds(6f);
-        gameCompletedMenu.SetActive(true);
+        SceneManager.LoadScene(3);
+
     }
 
     public void PlayAgain()

@@ -1124,6 +1124,7 @@ GameObject:
   - component: {fileID: 380366441}
   - component: {fileID: 380366440}
   - component: {fileID: 380366439}
+  - component: {fileID: 380366442}
   m_Layer: 5
   m_Name: JumpButton
   m_TagString: Untagged
@@ -1140,7 +1141,7 @@ RectTransform:
   m_GameObject: {fileID: 380366437}
   m_LocalRotation: {x: 0, y: 0, z: -0.7071068, w: 0.7071068}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 2.2801425, z: 1}
+  m_LocalScale: {x: 1.2828, y: 2.9249668, z: 1.2828}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1641369952}
@@ -1148,7 +1149,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: -90}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: 718, y: -380}
+  m_AnchoredPosition: {x: 718, y: -365}
   m_SizeDelta: {x: 118.463, y: 115.7692}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &380366439
@@ -1233,6 +1234,51 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 380366437}
   m_CullTransparentMesh: 1
+--- !u!114 &380366442
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 380366437}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 2
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 789224262}
+          m_TargetAssemblyTypeName: PlayerController, Assembly-CSharp
+          m_MethodName: DownJumpButton
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+  - eventID: 3
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 789224262}
+          m_TargetAssemblyTypeName: PlayerController, Assembly-CSharp
+          m_MethodName: UpJumpButton
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!4 &395545591 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7465738269995323890, guid: 1ddeef2f973c3bb4ba7759d5eb3f3de9, type: 3}
@@ -2113,6 +2159,7 @@ MonoBehaviour:
   moveRight: 0
   moveLeft: 0
   downButton: 0
+  jumpButton: 0
   dirSpeedRight: 5
   dirSpeedForward: 6
   jumpForce: 7
@@ -3232,7 +3279,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 195, y: -137.08}
+  m_AnchoredPosition: {x: 283, y: -137.08002}
   m_SizeDelta: {x: 293.6396, y: 73.0782}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1339633444
@@ -3497,7 +3544,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 195, y: -64}
+  m_AnchoredPosition: {x: 283, y: -64}
   m_SizeDelta: {x: 293.6396, y: 73.0782}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1374855024
@@ -4002,7 +4049,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 70}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1001 &1654414153
@@ -4201,7 +4248,7 @@ RectTransform:
   m_GameObject: {fileID: 1727731828}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.2828, y: 1.2828, z: 1.2828}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1641369952}
@@ -4209,7 +4256,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: -797.2, y: -380}
+  m_AnchoredPosition: {x: -805, y: -365}
   m_SizeDelta: {x: 125, y: 130}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1727731830
@@ -4782,7 +4829,7 @@ RectTransform:
   m_GameObject: {fileID: 1891917324}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.2828, y: 1.2828, z: 1.2828}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1641369952}
@@ -4790,7 +4837,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: -636, y: -380}
+  m_AnchoredPosition: {x: -603, y: -365}
   m_SizeDelta: {x: 125, y: 130}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1891917326
