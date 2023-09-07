@@ -12,9 +12,11 @@ public class PlayerController : MonoBehaviour
     private float dirRight;
 
     public bool completedLevel;
+
     public bool moveRight;
     public bool moveLeft;
     public bool downButton;
+    public bool jumpButton;
 
     [SerializeField] float dirSpeedRight;
     [SerializeField] float dirSpeedForward;
@@ -62,7 +64,7 @@ public class PlayerController : MonoBehaviour
             audioManager.PlaySFX(audioManager.fallingSFX);
         }
     }
-    private void Jump()
+    public void Jump()
     {
         if (Input.GetKeyDown(KeyCode.Space) && isLive && IsGrounded() && !completedLevel)
         {
@@ -74,6 +76,19 @@ public class PlayerController : MonoBehaviour
             {
                 playerRb.transform.DOMoveY(0, 0.4f).SetEase(barrelEase); // InOutFlash
             });
+        }
+
+        if (jumpButton && isLive && IsGrounded() && !completedLevel)
+        {
+            audioManager.PlaySFX(audioManager.jumpSFX);
+            playerAnim.SetTrigger("Jumped");
+            //playerRb.velocity = new Vector3(playerRb.velocity.x, jumpForce, playerRb.velocity.z);
+
+            playerRb.transform.DOMoveY(2, 0.5f).SetEase(barrelEase).OnComplete(() =>
+            {
+                playerRb.transform.DOMoveY(0, 0.4f).SetEase(barrelEase); // InOutFlash
+            });
+            jumpButton = false;
         }
     }
 
@@ -196,4 +211,11 @@ public class PlayerController : MonoBehaviour
             dirRight = 0;
         }
     }
+
+    public void DownJumpButton()
+    {
+        jumpButton = true;
+    }
+
+   
 }
